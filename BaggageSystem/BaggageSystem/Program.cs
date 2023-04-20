@@ -59,7 +59,7 @@ namespace BaggageSystem
             pg.RunTime();
         }
 
-        public void RunTime()
+        public void RunTime()//reserve flight and create flight from seperate program with name pipes
         {
             while (true)
             {

@@ -28,3 +28,5 @@ C:\Users\zbcwise\Documents\GitHub\ThreadExpamples\BaggageSystem\BaggageSystem\ob
 C:\Users\zbcwise\Documents\GitHub\ThreadExpamples\BaggageSystem\BaggageSystem\obj\Debug\net6.0\BaggageSystem.pdb
 C:\Users\zbcwise\Documents\GitHub\ThreadExpamples\BaggageSystem\BaggageSystem\obj\Debug\net6.0\BaggageSystem.genruntimeconfig.cache
 C:\Users\zbcwise\Documents\GitHub\ThreadExpamples\BaggageSystem\BaggageSystem\obj\Debug\net6.0\ref\BaggageSystem.dll
+C:\Users\zbcwise\Documents\GitHub\ThreadExpamples\BaggageSystem\BaggageSystem\bin\Debug\net6.0\Newtonsoft.Json.dll
+C:\Users\zbcwise\Documents\GitHub\ThreadExpamples\BaggageSystem\BaggageSystem\obj\Debug\net6.0\BaggageSystem.csproj.CopyComplete
