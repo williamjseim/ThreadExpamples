@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "xrjjupk+Hy3t0l40XXX+wNdcV0DGX/Xl3x0mrvxnZ8fOG6s3B9j5amoJWLbH6ysJRQMIQ6FfBP0t4Rna8wT1Jg==",
+  "dgSpecHash": "c952yxaVhrUwHqmcn3KVjoG2cqUe/pchfqQCw6/wCNk6GTFa304ucUlSOmIjKO6+UEsFCVYbvBNEG9KJwgLQcQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Spurgt fuglen\\source\\repos\\BaggageSystem\\BaggageSystem\\BaggageSystem.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "C:\\Users\\zbcwise\\Documents\\GitHub\\ThreadExpamples\\BaggageSystem\\BaggageSystem\\BaggageSystem.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\zbcwise\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512"
+  ],
   "logs": []
 }
