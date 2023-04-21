@@ -1,23 +1,20 @@
-﻿using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using System.Diagnostics;
-using Newtonsoft.Json;
+﻿using System.Diagnostics;
 using System.Text;
 
 namespace BaggageSystem
 {
     internal class Program
     {
+        public int flightIndex;
         static string folderpath = @"C:\Users\zbcwise\Desktop\source\";
         static string logPath = @"asd.txt";
-        static string reservationFile = @"reservations.json";
-        static string possibleReservations = @"C:possible.json";
+        //static string reservationFile = @"reservations.json";
+        //static string possibleReservations = @"C:possible.json";
         public int baggegaIndenx;
         public static object sorterLock = new object();
         public static object sortingLock = new object();
         public Dictionary<int, Queue<Baggage>> sortedBaggage = new Dictionary<int, Queue<Baggage>>();
         public bool terminalWorking;
-
 
         public object flightLock = new object();
         Queue<FlightPlan> flightPlans = new Queue<FlightPlan>();
@@ -26,6 +23,8 @@ namespace BaggageSystem
         List<string> sorterLog = new List<string>();
         List<string> TerminalLog = new List<string>();
         Queue<FlightPlan> leavingPlanes= new Queue<FlightPlan>();
+        List<string> flightHistory = new List<string>();
+        Queue<FlightPlan> createdFlights = new Queue<FlightPlan>();
 
         public List<Terminal> terminals = new List<Terminal>
         {
@@ -63,76 +62,145 @@ namespace BaggageSystem
         {
             while (true)
             {
+                Console.Clear();
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.WriteLine("create flight 1");
+                Console.WriteLine("Reserve flight 2");
+                Console.WriteLine("Show flights 3");
+                Console.WriteLine("Show Open Terminals T");
+                Console.WriteLine("Clear Console P");
                 ConsoleKeyInfo keyInfo= Console.ReadKey();
-                if (keyInfo.Key == ConsoleKey.P)
+                Console.Clear();
+                if (keyInfo.Key == ConsoleKey.D1)
                 {
-                    skranker.Add(new Skranke('p'));
+                    FlightPlan plan = new FlightPlan();
+                    try
+                    {
+                        Console.WriteLine("amount of seats in the plane");
+                        plan.Seats = int.Parse(Console.ReadLine());
+                    }
+                    catch { plan.Seats = 0; }
+                    try
+                    {
+                        Console.WriteLine("how many minutes should the plane stay");
+                        TimeSpan time = new TimeSpan(0, int.Parse(Console.ReadLine()), 0);
+                        plan.planeLeaveTime = time;
+                    }
+                    catch { plan.planeLeaveTime = new TimeSpan(0, 1, 0); }
+                    Console.WriteLine("Wanna fill plane Y/N");
+                    if(Console.ReadKey().Key == ConsoleKey.Y)
+                    {
+                        plan.passengerLog = new List<Passenger>();
+                    }
+                    plan.terminalId = -1;
+                        createdFlights.Enqueue(plan);
                 }
-                else if(keyInfo.Key == ConsoleKey.O)
+                else if(keyInfo.Key == ConsoleKey.D2)
                 {
-                    //terminals.Add(new Terminal(terminals.Count,GenerateFlightPlan(terminals.Count)));
-                        Console.WriteLine(sorterLog.Count+" "+TerminalLog.Count+" "+flightPlans.Count);
+                    foreach (FlightPlan flight in flightPlans)
+                    {
+                        if (flight.passengerLog.Count > 0)
+                        {
+                            Console.ForegroundColor = ConsoleColor.Blue;
+                        }
+                        else
+                        {
+                            Console.ForegroundColor = ConsoleColor.White;
+                        }
+                        Console.WriteLine(flight);
+                    }
+                    Console.WriteLine("Chooses flight 1 to "+flightPlans.Count);
+                    try
+                    {
+                        int i = int.Parse(Console.ReadLine());
+                        flightPlans.ElementAt(i - 1).passengerLog.Add(GeneratePassenger());
+                    }
+                    catch { }
+                }
+                else if(keyInfo.Key == ConsoleKey.D3)
+                {
+                    foreach (FlightPlan flight in flightPlans)
+                    {
+                        if (flight.passengerLog.Count > 0)
+                        {
+                            Console.ForegroundColor = ConsoleColor.Blue;
+                            Console.WriteLine(flight+" Reserved by user");
+                        }
+                        else
+                        {
+                            Console.ForegroundColor = ConsoleColor.White;
+                            Console.WriteLine(flight);
+                        }
+                    }
+                        Console.ReadKey();
+                }
+                else if (keyInfo.Key == ConsoleKey.T)
+                {
+                    foreach (Terminal terminal in terminals)
+                    {
+                        Console.WriteLine(terminal + " is open");
+                    }
+                    Console.ReadKey();
+                }
+                else if (keyInfo.Key == ConsoleKey.P)
+                {
+                    Console.Clear();
                 }
             }
         }
 
-        void ReservationController()
+        Passenger GeneratePassenger()
         {
-            JsonSerializer serializer = new JsonSerializer();
-            if (File.Exists(folderpath + reservationFile))
-            {
-                using (StreamReader sw = new StreamReader(folderpath+ reservationFile))
-                using (JsonReader reader = new JsonTextReader(sw))
-                {
-                    serializer.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
-                    JObject obj = serializer.Deserialize<JObject>(reader);
-                }
-                File.Delete(reservationFile);
-            }
-        }
-
-        void CreateReservations()
-        {
-            JsonSerializer serializer = new JsonSerializer();
-            if (File.Exists(folderpath + possibleReservations))
-            {
-                using (StreamWriter sw = new StreamWriter(folderpath+possibleReservations))
-                using (JsonWriter writer = new JsonTextWriter(sw))
-                {
-                    serializer.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
-                    serializer.Serialize(writer,flightPlans);
-                }
-            }
+            Random rand = new Random();
+            return new Passenger(Names.Firstname+" "+Names.LastName, (Destination)rand.Next(0, Enum.GetNames(typeof(Destination)).Length));
         }
 
         void AirPortTowerController()
         {
             bool plansChanged = false;
             Random rand = new Random();
-            foreach (Terminal terminal in terminals)
-            {
-                plansChanged= true;
-                terminal.plan = GenerateFlightPlan(terminal.id);
-                terminal.stopwatch.Start();
-            }
+            //foreach (Terminal terminal in terminals)
+            //{
+            //    plansChanged= true;
+            //    terminal.plan = GenerateFlightPlan();
+            //    terminal.stopwatch.Start();
+            //}
             while (true)
             {
-                if(flightPlans.Count < 10)
-                if (rand.Next(0, 100) > 95)
+                //if(flightPlans.Count < 10)
+                //if (rand.Next(0, 100) > 95)
+                //{
+                //    if (!Monitor.TryEnter(flightLock))
+                //    {
+                //        Monitor.Enter(flightLock);
+                //        Monitor.Wait(flightLock);
+                //    }
+                //    try
+                //    {
+                //        flightPlans.Enqueue(GenerateFlightPlan());
+                //    }
+                //    finally { Monitor.PulseAll(flightLock); Monitor.Exit(flightLock); }
+                //}
+                if (Monitor.TryEnter(createdFlights)&&createdFlights.Count > 0)
                 {
-                    if (!Monitor.TryEnter(flightLock))
-                    {
-                            Console.WriteLine("flightlock");
-                        Monitor.Enter(flightLock);
-                        Monitor.Wait(flightLock);
-                    }
                     try
                     {
-                        flightPlans.Enqueue(GenerateFlightPlan(-1));
+                        for (int i = 0; i < createdFlights.Count; i++)
+                        {
+                            FlightPlan t = createdFlights.Dequeue();
+                            if(t.passengerLog != null)
+                            {
+                                for (int j = 0; j < t.Seats; j++)
+                                {
+                                    t.passengerLog.Add(GeneratePassenger());
+                                }
+                            }
+                            flightPlans.Enqueue(t);
+                        }
                     }
-                    finally { Monitor.PulseAll(flightLock); Monitor.Exit(flightLock); }
+                    finally { Monitor.Exit(createdFlights); }
                 }
-                if (terminals.Count <= 2&&flightPlans.Count > terminals.Count)
+                if (terminals.Count <= 5&&flightPlans.Count > terminals.Count)
                 {
                     plansChanged = true;
                     FlightPlan t = flightPlans.Dequeue();
@@ -163,30 +231,37 @@ namespace BaggageSystem
                 {
                     plansChanged = false;
                     Console.Clear();
-                    foreach (Terminal terminal in terminals)
-                    {
-                        Console.ForegroundColor= ConsoleColor.Green;
-                        Console.WriteLine("terminal id "+terminal.id+" flight plan id "+terminal.plan);
-                    }
                     foreach (FlightPlan flight in flightPlans)
                     {
-                        Console.ForegroundColor= ConsoleColor.White;
-                        Console.WriteLine(flight+ "ready for arrival");
+                        //Console.ForegroundColor= ConsoleColor.White;
+                        //Console.WriteLine(flight+ "ready for arrival");
                     }
                     foreach (FlightPlan flightPlan in leavingPlanes)
                     {
                         if (flightPlan.Crashed)
                         {
-                            Console.ForegroundColor = ConsoleColor.Red;
-                            Console.WriteLine(flightPlan +" crashed");
+                            if (flightPlan.passengerLog.Count > 0)
+                            {
+                                //Console.ForegroundColor = ConsoleColor.Magenta;
+                                flightHistory.Add(flightPlan.ToString() + " crashed");
+                            }
+                            else
+                            {
+                                //Console.ForegroundColor = ConsoleColor.Red;
+                                flightHistory.Add(flightPlan + " crashed");
+                            }
+                        }
+                        else if (flightPlan.passengerLog.Count > 0)
+                        {
+                            //Console.ForegroundColor = ConsoleColor.Blue;
+                            flightHistory.Add(flightPlan + " is leaving");
                         }
                         else
                         {
-                            Console.ForegroundColor = ConsoleColor.Yellow;
-                            Console.WriteLine(flightPlan + " is leaving");
+                            //Console.ForegroundColor = ConsoleColor.Yellow;
+                            flightHistory.Add(flightPlan + " is leaving");
                         }
                     }
-                    CreateReservations();
                 }
             }
         }
@@ -217,17 +292,14 @@ namespace BaggageSystem
             }
         }
 
-        FlightPlan GenerateFlightPlan(int id)
+        FlightPlan GenerateFlightPlan()
         {
-            return new FlightPlan(new TimeSpan(0,1,0),false,id);
+            Random rand = new Random();
+            return new FlightPlan(flightIndex++,new TimeSpan(0,1,0),false,-1,(Destination)rand.Next(0,Enum.GetNames(typeof(Destination)).Length));
         }
 
         void Sorter()
         {
-            foreach (Terminal terminal in this.terminals)
-            {
-                sortedBaggage.Add(terminal.id, new Queue<Baggage>());
-            }
             while (true)
             {
                 try
@@ -337,6 +409,7 @@ namespace BaggageSystem
                 {
                     foreach (Terminal terminal in terminals)
                     {
+                        if(terminal != null)
                         if(terminal.plan != null)
                         {
                             if(sortedBaggage.TryGetValue(terminal.id,out Queue<Baggage> queue))
@@ -414,15 +487,17 @@ namespace BaggageSystem
 
     class FlightPlan
     {
+        public int id;
         public TimeSpan planeLeaveTime;
         public bool planeLeaving = false;
         public int terminalId;
         public bool Crashed = false;
         public int Seats;
         public int reservations;
-        public bool reservedByUser = false;
+        public List<Passenger> passengerLog = null;
+        public Destination destination;
 
-        public FlightPlan(TimeSpan planeLeaveTime, bool planeLeaving, int terminalId)
+        public FlightPlan(int id ,TimeSpan planeLeaveTime, bool planeLeaving, int terminalId, Destination destination)
         {
             Random rand = new Random();
             this.planeLeaveTime = planeLeaveTime;
@@ -430,6 +505,13 @@ namespace BaggageSystem
             this.terminalId = terminalId;
             this.Seats = rand.Next(24, 100);
             this.Seats = rand.Next(24, Seats);
+            this.destination = destination;
+            this.id = id;
+        }
+
+        public FlightPlan()
+        {
+
         }
     }
 
@@ -446,5 +528,51 @@ namespace BaggageSystem
             this.id = id;
             this.plan = plan;
         }
+    }
+
+    class Passenger
+    {
+        public Passenger(string name,Destination destination)
+        {
+            this.destination = destination;
+            this.name = name;
+        }
+        public string name = "";
+        public int flightId;
+        public Destination destination;
+    }
+
+    public enum Destination
+    {
+        Kazakhstan,
+        London,
+        Tajikistan,
+        Uzbekistan,
+        Kyrgyzstan,
+        Turkmenistan,
+        Afghanistan,
+        Pakistan,
+        Hungary
+    }
+
+    public static class Names
+    {
+        static Random rand = new Random();
+        public static string Firstname { get { return firstName[rand.Next(0, firstName.Length)]; } }
+        public static string LastName { get { return lastName[rand.Next(0, lastName.Length)]; } }
+
+        static string[] firstName = new string[]
+        {
+            "oliver",
+            "karsten",
+            "steve",
+            "paul"
+        };
+
+        static string[] lastName = new string[]
+        {
+            "hansen",
+            ""
+        };
     }
 }
