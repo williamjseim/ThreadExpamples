@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "4e3yXluYa2bWw4nMSe1FUGUl6aYSEONWcTa+Mul9uVrDyZPXkZpXqzpleQ2xMuAqXF3vEvZhxHTZvKsJ9LjOwQ==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\zbcwise\\source\\repos\\FlaskeautomatGUi\\FlaskeautomatGUi\\FlaskeautomatGUi.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\zbcwise\\.nuget\\packages\\wpfanimatedgif\\2.0.2\\wpfanimatedgif.2.0.2.nupkg.sha512"
+  ],
+  "logs": []
+}
