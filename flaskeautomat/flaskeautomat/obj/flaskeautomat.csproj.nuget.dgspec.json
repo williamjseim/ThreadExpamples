@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\zbcwise\\source\\repos\\flaskeautomat\\flaskeautomat\\flaskeautomat.csproj": {}
+    "C:\\Users\\zbcwise\\Documents\\GitHub\\ThreadExpamples\\flaskeautomat\\flaskeautomat\\flaskeautomat.csproj": {}
   },
   "projects": {
-    "C:\\Users\\zbcwise\\source\\repos\\flaskeautomat\\flaskeautomat\\flaskeautomat.csproj": {
+    "C:\\Users\\zbcwise\\Documents\\GitHub\\ThreadExpamples\\flaskeautomat\\flaskeautomat\\flaskeautomat.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\zbcwise\\source\\repos\\flaskeautomat\\flaskeautomat\\flaskeautomat.csproj",
+        "projectUniqueName": "C:\\Users\\zbcwise\\Documents\\GitHub\\ThreadExpamples\\flaskeautomat\\flaskeautomat\\flaskeautomat.csproj",
         "projectName": "flaskeautomat",
-        "projectPath": "C:\\Users\\zbcwise\\source\\repos\\flaskeautomat\\flaskeautomat\\flaskeautomat.csproj",
+        "projectPath": "C:\\Users\\zbcwise\\Documents\\GitHub\\ThreadExpamples\\flaskeautomat\\flaskeautomat\\flaskeautomat.csproj",
         "packagesPath": "C:\\Users\\zbcwise\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\zbcwise\\source\\repos\\flaskeautomat\\flaskeautomat\\obj\\",
+        "outputPath": "C:\\Users\\zbcwise\\Documents\\GitHub\\ThreadExpamples\\flaskeautomat\\flaskeautomat\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Users\\zbcwise\\AppData\\Roaming\\Godot\\mono\\GodotNuGetFallbackFolder"
@@ -59,7 +59,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.103\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
         }
       }
     }

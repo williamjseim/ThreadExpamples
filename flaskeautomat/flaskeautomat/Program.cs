@@ -1,4 +1,5 @@
-﻿namespace flaskeautomat
+﻿
+namespace flaskeautomat
 {
     class Bottle { }
     class BeerBottle : Bottle { }
@@ -8,19 +9,22 @@
         public static Queue<Bottle> bottleBuffer = new Queue<Bottle>(10);
         public static Queue<Bottle> beerBuffer = new Queue<Bottle>(10);
         public static Queue<Bottle> sodaBuffer = new Queue<Bottle>(10);
+        static CancellationTokenSource source = new CancellationTokenSource();
         static object bottleLock = new object();
+
         static void Main(string[] args)
         {
             Program pg = new Program();
-            Thread t = new Thread(pg.Producer);
-            t.Start();
-            Thread a = new Thread(pg.ConsumerSplitter);
+            ThreadPool.QueueUserWorkItem(o=>pg.Producer(source.Token));
+            Thread a = new Thread(o=>pg.ConsumerSplitter(source.Token));
             a.Start();
-            Thread s = new Thread(pg.Consumer);
+            Thread s = new Thread(O=>pg.Consumer(source.Token));
             s.Start();
+            Console.ReadKey();
+            source.Cancel();
         }
 
-        Bottle CreateBottle(int i)
+        Bottle CreateBottle(int i)//creates bottles
         {
             Bottle bottle;
             if (i == 1)
@@ -34,22 +38,21 @@
             return bottle;
         }
 
-        void Producer()
+        Random rand = new Random();
+        void Producer(CancellationToken token)//makes bottles
         {
-            while(true)
+            while(!token.IsCancellationRequested)
             {
                 Console.WriteLine("producer");
                 Monitor.Enter(bottleBuffer);
                 try
                 {
-                    Random rand = new Random();
                     int random = rand.Next(0, 11);
                     for (int i = 0; i < random; i++)
                     {
                         int j = rand.Next(0, 2);
                         Console.WriteLine("add bottle");
                         bottleBuffer.Enqueue(CreateBottle(j));
-                        Thread.Sleep(100);
                     }
 
                 }
@@ -57,9 +60,9 @@
             }
         }
 
-        void ConsumerSplitter()
+        void ConsumerSplitter(CancellationToken token)//sorts bottles
         {
-            while(true)
+            while(!token.IsCancellationRequested)
             {
                 Console.WriteLine("splitter");
                 Monitor.Enter(bottleBuffer);
@@ -68,10 +71,6 @@
                     while (bottleBuffer.Count == 0)
                     {
                         Monitor.Wait(bottleBuffer);
-                    }
-                    if (!Monitor.TryEnter(bottleLock))
-                    {
-
                     }
                     Monitor.Enter(bottleLock);
                     try
@@ -89,7 +88,6 @@
                                 Console.WriteLine("soda split");
                                 sodaBuffer.Enqueue(obj);
                             }
-                            Thread.Sleep(100);
                         }
                     }
                     finally { Monitor.PulseAll(bottleLock); Monitor.Exit(bottleLock); }
@@ -98,14 +96,22 @@
             }
         }
 
-        void Consumer()
+        void Consumer(CancellationToken token)//eats bottles
         {
-            while(true)
+            while(!token.IsCancellationRequested)
             {
-                Monitor.Enter(bottleLock);
-                Monitor.Wait(bottleLock);
+                if (!BottlesLeft())
+                {
+                    Monitor.Enter(bottleLock);
+                    Monitor.Wait(bottleLock);
+                }
+                else
+                {
+                    Monitor.Enter(bottleLock);
+                }
                 try
                 {
+                    Console.WriteLine("consumer");
                     while (BottlesLeft())
                     {
                         if (sodaBuffer.Count > 0)
@@ -118,7 +124,6 @@
                             Console.WriteLine("Crush beer");
                             beerBuffer.Dequeue();
                         }
-                        Thread.Sleep(100);
                     }
                 }
                 catch { throw; }
@@ -126,7 +131,7 @@
             }
         }
 
-        bool BottlesLeft()
+        bool BottlesLeft()//checks if there are anymore bottles in the queues
         {
             if(sodaBuffer.Count > 0)
             {
