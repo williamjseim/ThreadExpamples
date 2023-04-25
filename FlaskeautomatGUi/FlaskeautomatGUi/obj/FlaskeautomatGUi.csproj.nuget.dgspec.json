@@ -1,24 +1,26 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\zbcwise\\source\\repos\\FlaskeautomatGUi\\FlaskeautomatGUi\\FlaskeautomatGUi.csproj": {}
+    "F:\\GitHub\\ThreadExpamples\\FlaskeautomatGUi\\FlaskeautomatGUi\\FlaskeautomatGUi.csproj": {}
   },
   "projects": {
-    "C:\\Users\\zbcwise\\source\\repos\\FlaskeautomatGUi\\FlaskeautomatGUi\\FlaskeautomatGUi.csproj": {
+    "F:\\GitHub\\ThreadExpamples\\FlaskeautomatGUi\\FlaskeautomatGUi\\FlaskeautomatGUi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\zbcwise\\source\\repos\\FlaskeautomatGUi\\FlaskeautomatGUi\\FlaskeautomatGUi.csproj",
+        "projectUniqueName": "F:\\GitHub\\ThreadExpamples\\FlaskeautomatGUi\\FlaskeautomatGUi\\FlaskeautomatGUi.csproj",
         "projectName": "FlaskeautomatGUi",
-        "projectPath": "C:\\Users\\zbcwise\\source\\repos\\FlaskeautomatGUi\\FlaskeautomatGUi\\FlaskeautomatGUi.csproj",
-        "packagesPath": "C:\\Users\\zbcwise\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\zbcwise\\source\\repos\\FlaskeautomatGUi\\FlaskeautomatGUi\\obj\\",
+        "projectPath": "F:\\GitHub\\ThreadExpamples\\FlaskeautomatGUi\\FlaskeautomatGUi\\FlaskeautomatGUi.csproj",
+        "packagesPath": "C:\\Users\\Spurgt fuglen\\.nuget\\packages\\",
+        "outputPath": "F:\\GitHub\\ThreadExpamples\\FlaskeautomatGUi\\FlaskeautomatGUi\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Users\\zbcwise\\AppData\\Roaming\\Godot\\mono\\GodotNuGetFallbackFolder"
+          "C:\\Users\\Spurgt fuglen\\AppData\\Roaming\\Godot\\mono\\GodotNuGetFallbackFolder",
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\zbcwise\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Users\\zbcwise\\AppData\\Roaming\\NuGet\\config\\Godot.Offline.Config",
+          "C:\\Users\\Spurgt fuglen\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Spurgt fuglen\\AppData\\Roaming\\NuGet\\config\\Godot.Offline.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -26,6 +28,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {

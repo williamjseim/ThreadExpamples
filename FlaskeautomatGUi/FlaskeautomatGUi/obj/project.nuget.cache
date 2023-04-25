@@ -1,10 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "4e3yXluYa2bWw4nMSe1FUGUl6aYSEONWcTa+Mul9uVrDyZPXkZpXqzpleQ2xMuAqXF3vEvZhxHTZvKsJ9LjOwQ==",
+  "dgSpecHash": "8Jklfywrv4Qw4upoDmiZv3q+b8bUlfDtAA3JSfD6zdeuSsb/sKVbODrmNFno34tMrRJcT9Nqx88uUYKVTUKJWQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\zbcwise\\source\\repos\\FlaskeautomatGUi\\FlaskeautomatGUi\\FlaskeautomatGUi.csproj",
+  "projectFilePath": "F:\\GitHub\\ThreadExpamples\\FlaskeautomatGUi\\FlaskeautomatGUi\\FlaskeautomatGUi.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\zbcwise\\.nuget\\packages\\wpfanimatedgif\\2.0.2\\wpfanimatedgif.2.0.2.nupkg.sha512"
+    "C:\\Users\\Spurgt fuglen\\.nuget\\packages\\wpfanimatedgif\\2.0.2\\wpfanimatedgif.2.0.2.nupkg.sha512"
   ],
   "logs": []
 }

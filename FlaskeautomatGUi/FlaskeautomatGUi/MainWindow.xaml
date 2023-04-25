@@ -11,16 +11,16 @@
         <Grid.Background>
             <VisualBrush>
                 <VisualBrush.Visual>
-                    <Image gif:ImageBehavior.AnimatedSource="C:\Users\zbcwise\source\repos\FlaskeautomatGUi\FlaskeautomatGUi\gif\giphy.gif" gif:ImageBehavior.AutoStart="True" />
+                    <Image gif:ImageBehavior.AnimatedSource="F:\GitHub\ThreadExpamples\FlaskeautomatGUi\FlaskeautomatGUi\gif\giphy.gif" gif:ImageBehavior.AutoStart="True" />
                 </VisualBrush.Visual>
             </VisualBrush>
         </Grid.Background>
         <Canvas Name="Canvas">
+            <Button Content="Button" Canvas.Left="1197" Canvas.Top="230" Click="Button_Click_1"/>
             <Canvas Name="asd">
                 <Rectangle Height="50" Canvas.Left="50" Fill="Black" Name="box" Stroke="Black" Canvas.Top="50" Width="50"/>
                 <TextBox Canvas.Left="15" TextWrapping="Wrap" Text="TextBox" Canvas.Top="66" Width="120" RenderTransformOrigin="0.008,0.002"/>
             </Canvas>
-            <Button Content="Button" Canvas.Left="97" Canvas.Top="230" Click="Button_Click_1"/>
         </Canvas>
     </Grid>
 </Window>

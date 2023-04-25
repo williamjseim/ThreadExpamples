@@ -25,18 +25,17 @@ namespace FlaskeautomatGUi
         public MainWindow()
         {
             InitializeComponent();
-            
-        }
-
-        void test()
-        {
-                box.RenderTransform = new TranslateTransform(box.RenderTransformOrigin.X, box.RenderTransformOrigin.Y + 5);
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            asd.RenderTransform = new TranslateTransform(asd.RenderTransform.Value.OffsetX+100, asd.RenderTransform.Value.OffsetY);
-
+            GenerateBottle();
         }
+
+        void GenerateBottle()
+        {
+            
+        }
+
     }
 }
