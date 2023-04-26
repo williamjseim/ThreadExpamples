@@ -8,11 +8,15 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="gif\" />
+    <None Remove="gif\640px-User-trash.svg.png" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="WpfAnimatedGif" Version="2.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="gif\640px-User-trash.svg.png" />
   </ItemGroup>
 
 </Project>

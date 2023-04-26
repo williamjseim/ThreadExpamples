@@ -54,11 +54,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\zbcwise\\source\\repos\\FlaskeautomatGUi\\FlaskeautomatGUi\\FlaskeautomatGUi.csproj",
+      "projectUniqueName": "C:\\Users\\zbcwise\\Documents\\GitHub\\ThreadExpamples\\FlaskeautomatGUi\\FlaskeautomatGUi\\FlaskeautomatGUi.csproj",
       "projectName": "FlaskeautomatGUi",
-      "projectPath": "C:\\Users\\zbcwise\\source\\repos\\FlaskeautomatGUi\\FlaskeautomatGUi\\FlaskeautomatGUi.csproj",
+      "projectPath": "C:\\Users\\zbcwise\\Documents\\GitHub\\ThreadExpamples\\FlaskeautomatGUi\\FlaskeautomatGUi\\FlaskeautomatGUi.csproj",
       "packagesPath": "C:\\Users\\zbcwise\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\zbcwise\\source\\repos\\FlaskeautomatGUi\\FlaskeautomatGUi\\obj\\",
+      "outputPath": "C:\\Users\\zbcwise\\Documents\\GitHub\\ThreadExpamples\\FlaskeautomatGUi\\FlaskeautomatGUi\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Users\\zbcwise\\AppData\\Roaming\\Godot\\mono\\GodotNuGetFallbackFolder"
