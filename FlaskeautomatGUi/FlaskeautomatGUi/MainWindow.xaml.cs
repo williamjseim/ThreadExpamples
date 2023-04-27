@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -10,6 +11,7 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
@@ -23,67 +25,79 @@ namespace FlaskeautomatGUi
     public partial class MainWindow : Window
     {
         private System.Windows.Threading.DispatcherTimer Tick = new System.Windows.Threading.DispatcherTimer();
+        private System.Windows.Threading.DispatcherTimer moveTick = new System.Windows.Threading.DispatcherTimer();
         CancellationTokenSource source = new CancellationTokenSource();
         
+        Stopwatch stopwatch = new Stopwatch();
+
         List<Rectangle> rects = new List<Rectangle>();
+
+        int bottleIndex = 0;
 
         object bottleLock = new object();
         Queue<Bottle> bottleBuffer = new Queue<Bottle>(10);
         Queue<Bottle> droppedBottles = new Queue<Bottle>(10);
-        
+        Thread producerThread;
+        Thread splitterThread;
+        Rectangle? unsortedRect;
+        Bottle? unsortedBottle;
 
+        bool pickup = false;
         public MainWindow()
         {
             InitializeComponent();
+            gif.Visibility = Visibility.Collapsed;
             Tick.Tick += Process;
+            moveTick.Tick += MoveRects;
             Tick.Start();
-            Thread t = new Thread(o => Producer(source.Token));
-            Thread a = new Thread(o => ConsumerSplitter(source.Token));
-            t.Start();
-            a.Start();
+            moveTick.Start();
+            Tick.Interval = new TimeSpan(0, 0, 0,0,125);
+            producerThread = new Thread(o => Producer(source.Token));
+            producerThread.Start();
+            splitterThread = new Thread(o => ConsumerSplitter(source.Token));
+            splitterThread.Start();
         }
+
         void Process(object sender, EventArgs e)
         {
-            if (!source.Token.IsCancellationRequested)
+            if (!pickup)
             {
                 if (Monitor.TryEnter(bottleLock))
                 {
                     try
                     {
-                        if (droppedBottles.Count > 0&&rects.Count < 10)
+                        if (droppedBottles.Count > 0&&rects.Count < 1&&unsortedBottle == null)
                         {
                             int i = droppedBottles.Count;
-                                Rectangle rect = new Rectangle
-                                {
-                                    Width = 50,
-                                    Height = 50,
-                                };
-                                Bottle bottle = droppedBottles.Dequeue();
-                                //rect.RenderTransform = beer.RenderTransform;
-                                //rect.Fill = new SolidColorBrush(Colors.Green);
-                                if (bottle.GetType() == typeof(BeerBottle))
-                                {
-                                    Canvas.SetLeft(rect, 530);
-                                    rect.Fill = new SolidColorBrush(Colors.Green);
-                                }
-                                else
-                                {
-                                    Canvas.SetLeft(rect, 1126);
-                                    rect.Fill = new SolidColorBrush(Colors.Red);
-                                }
-                                rects.Add(rect);
-                                canvas.Children.Add(rect);
-                        }
-                        foreach (Rectangle rectangle in rects)
-                        {
-                            rectangle.RenderTransform = new TranslateTransform(rectangle.RenderTransform.Value.OffsetX, rectangle.RenderTransform.Value.OffsetY + 0.1f);
-                            if (rectangle.RenderTransform.Value.OffsetY > 800)
+                            Rectangle rect = new Rectangle
                             {
-                                rectangle.RenderTransform = new TranslateTransform(rectangle.RenderTransform.Value.OffsetX, 0);
-                                canvas.Children.Remove(rectangle);
+                                Width = 50,
+                                Height = 50,
+                            };
+                            unsortedBottle = droppedBottles.Dequeue();
+                            unsortedRect = rect;
+                            rect.Fill = new SolidColorBrush(Colors.Black);
+                            Canvas.SetLeft(rect, 800);
+                            canvas.Children.Add(rect);
+                        }
+                        else if (unsortedRect != null)
+                        {
+                            if (unsortedBottle.GetType() == typeof(BeerBottle))
+                            {
+                                Canvas.SetLeft(unsortedRect, 530);
+                                unsortedRect.Fill = new SolidColorBrush(Colors.Green);
                             }
+                            else
+                            {
+                                Canvas.SetLeft(unsortedRect, 1126);
+                                unsortedRect.Fill = new SolidColorBrush(Colors.Red);
+                            }
+                            rects.Add(unsortedRect);
+                            unsortedRect = null;
+                            unsortedBottle = null;
                         }
                     }
+                    catch { Monitor.PulseAll(bottleLock); Trace.Write(" main failed"); }
                     finally
                     { 
                         if(droppedBottles.Count == 0)
@@ -94,20 +108,58 @@ namespace FlaskeautomatGUi
             }
         }
 
+        void MoveRects(object sender, EventArgs e)
+        {
+            if(stopwatch.Elapsed > new TimeSpan(0, 0, 7))
+            {
+                gif.Visibility = Visibility.Collapsed;
+                beerTrash.Visibility = Visibility.Visible;
+                sodaTrash.Visibility = Visibility.Visible;
+                bottleIndex = 0;
+                pickup = false;
+                stopwatch.Stop();
+                stopwatch.Reset();
+            }
+            if(bottleIndex == 10&&!pickup)
+            {
+                stopwatch.Start();
+                pickup = true;
+                var image = new BitmapImage();
+                image.BeginInit();
+                image.UriSource = new Uri("C:\\Users\\zbcwise\\Documents\\GitHub\\ThreadExpamples\\FlaskeautomatGUi\\FlaskeautomatGUi\\gif\\angry-garbage.gif");
+                image.EndInit();
+                ImageBehavior.SetAnimatedSource(gif, image);
+                gif.Visibility = Visibility.Visible;
+                beerTrash.Visibility = Visibility.Collapsed;
+                sodaTrash.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                if(!pickup)
+                for (int i = rects.Count - 1; i >= 0; i--)
+                {
+                    rects[i].RenderTransform = new TranslateTransform(rects[i].RenderTransform.Value.OffsetX, rects[i].RenderTransform.Value.OffsetY + 0.1f);
+                    if (rects[i].RenderTransform.Value.OffsetY > 800)
+                    {
+                        bottleIndex++;
+                        rects[i].RenderTransform = new TranslateTransform(rects[i].RenderTransform.Value.OffsetX, 0);
+                        canvas.Children.Remove(rects[i]);
+                        rects.RemoveAt(i);
+                    }
+                }
+            }
+        }
+
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            //source.Cancel();
-            Rectangle rect = new Rectangle
+            if (source.Token.IsCancellationRequested)
             {
-                Width = 50,
-                Height = 50,
-                Fill = new SolidColorBrush(Colors.Black),
-                RenderTransform = beer.RenderTransform,
-            };
-            rects.Add(rect);
-            canvas.Children.Add(rect);
-            Canvas.SetTop(rect, 0);
-            Canvas.SetLeft(rect, 400);
+                source = new CancellationTokenSource();
+                producerThread = new Thread(o => Producer(source.Token));
+                producerThread.Start();
+                splitterThread = new Thread(o => ConsumerSplitter(source.Token));
+                splitterThread.Start();
+            }
         }
 
         Bottle CreateBottle(int i)//creates bottles
@@ -130,6 +182,16 @@ namespace FlaskeautomatGUi
             while (!token.IsCancellationRequested)
             {
                 Monitor.Enter(bottleBuffer);
+                if(bottleBuffer.Count > 0)
+                {
+                    while(splitterThread.ThreadState != System.Threading.ThreadState.WaitSleepJoin)
+                    {
+
+                    }
+                    Thread.Sleep(100);
+                    Monitor.PulseAll(bottleBuffer);
+                    Monitor.Wait(bottleBuffer);
+                }
                 try
                 {
                     int random = rand.Next(0, 11);
@@ -140,6 +202,7 @@ namespace FlaskeautomatGUi
                     }
                 }
                 finally { Monitor.PulseAll(bottleBuffer); Monitor.Exit(bottleBuffer); }
+                Thread.Sleep(100);
             }
         }
 
@@ -154,36 +217,20 @@ namespace FlaskeautomatGUi
                     {
                         Monitor.Wait(bottleBuffer);
                     }
-                    Monitor.Enter(bottleLock);
-                    try
+                    while (bottleBuffer.Count > 0 && droppedBottles.Count < 10)
                     {
-                        if(droppedBottles.Count >= 10)
-                        {
-                            Monitor.Wait(bottleLock);
-                        }
-                        while (bottleBuffer.Count > 0 && droppedBottles.Count < 10)
-                        {
-                            droppedBottles.Enqueue(bottleBuffer.Dequeue());
-                            //if (obj.GetType() == typeof(BeerBottle))
-                            //{
-                            //    beerBuffer.Enqueue(obj);
-                            //}
-                            //else
-                            //{
-                            //    sodaBuffer.Enqueue(obj);
-                            //}
-                        }
+                        droppedBottles.Enqueue(bottleBuffer.Dequeue());
                     }
-                    finally { Monitor.PulseAll(bottleLock); Monitor.Exit(bottleLock); }
                 }
                 finally { Monitor.PulseAll(bottleBuffer); Monitor.Exit(bottleBuffer); }
+                Thread.Sleep(100);
             }
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            if(!source.Token.IsCancellationRequested)
             source.Cancel();
-            Application.Current.Shutdown();
         }
     }
 

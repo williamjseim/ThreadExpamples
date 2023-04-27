@@ -9,12 +9,13 @@
         Title="MainWindow" Height="882" Width="1774">
     <Grid>
         <Canvas Name="canvas">
-            <Button Content="Move" Canvas.Left="97" Canvas.Top="230" Click="Button_Click_1"/>
-            <Image Name="sodaTrash" Height="336" Canvas.Left="417" Source="/gif/640px-User-trash.svg.png" Stretch="Fill" Canvas.Top="530" Width="325"/>
-            <Image Name="beerTrash" Height="336" Canvas.Left="1014" Source="/gif/640px-User-trash.svg.png" Stretch="Fill" Canvas.Top="530" Width="325" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+        <Image gif:ImageBehavior.AutoStart="True" Name="gif" Height="866" Width="1764" gif:ImageBehavior.RepeatBehavior="1"></Image>
+            <Button Content="Restart" Canvas.Left="7" Canvas.Top="134" Click="Button_Click_1" Height="50" Width="105" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+            <Image Name="sodaTrash" Height="336" Canvas.Left="417" Source="/gif/640px-User-trash.svg.png" Stretch="Fill" Canvas.Top="530" Width="325" Panel.ZIndex="5"/>
+            <Image Name="beerTrash" Height="336" Canvas.Left="1014" Source="/gif/640px-User-trash.svg.png" Stretch="Fill" Canvas.Top="530" Width="325" HorizontalAlignment="Left" VerticalAlignment="Top" Panel.ZIndex="5"/>
             <Rectangle Name="soda" Height="100" Canvas.Left="530" Stroke="Black" Canvas.Top="64" Width="100" HorizontalAlignment="Left" VerticalAlignment="Center"/>
             <Rectangle Name="beer" Height="100" Canvas.Left="1126" Stroke="Black" Canvas.Top="64" Width="100"/>
-            <Button Content="Stop" Canvas.Left="140" Canvas.Top="536" Click="Button_Click"/>
+            <Button Content="Stop" Canvas.Left="10" Canvas.Top="64" Click="Button_Click" Height="50" Width="102"/>
         </Canvas>
     </Grid>
 </Window>
