@@ -13,7 +13,8 @@
                         <StackPanel Orientation="Horizontal">
                                 <TextBox Name="CompanyName" Text="{Binding Path= CompanyName, Mode=TwoWay}" Width = "100"/>
                                 <TextBox Name="Destination" Text="{Binding Path= Destination, Mode=TwoWay}" Width = "100"/>
-                                <TextBox Name="TakeOfTime" Text="{Binding Path= TakeOfTime, Mode=TwoWay}"/> 
+                                <TextBox Name="TakeOfTime" Text="{Binding Path= TakeOfTime, Mode=OneWay}"/> 
+                                <TextBox Name="State" Text="{Binding Path= State, Mode=OneWay}"/> 
                         </StackPanel>
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
