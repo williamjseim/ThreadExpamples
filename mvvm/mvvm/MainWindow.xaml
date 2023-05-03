@@ -8,8 +8,8 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="800" Width="1200">
     <Grid>
-        <View:FlightPlan x:Name="FlightPlanViewControl" Loaded="FlightPlanViewControl_Loaded" Margin="0,0,800,0"/>
-        <View:FlightPlan x:Name="FlightPlanViewControl2" Loaded="FlightPlanViewControl_Loaded2" Margin="400,0,400,0"/>
+        <View:FlightPlan x:Name="FlightPlanViewControl" Loaded="FlightPlanViewControl_Loaded" Margin="0,0,800,0" />
+        <View:FlightPlan x:Name="FlightPlanViewControl2" Loaded="FlightPlanViewControl_Loaded2" Margin="400,0,400,0" />
         <Button Content="Button" HorizontalAlignment="Left" Margin="1027,91,0,0" VerticalAlignment="Top" Height="80" Width="118" Click="Button_Click_1"/>
     </Grid>
 </Window>

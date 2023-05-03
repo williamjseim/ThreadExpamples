@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\zbcwise\source\repos\mvvm\mvvm\obj\Debug\net7.0-windows\
+F:\GitHub\ThreadExpamples\mvvm\mvvm\obj\Debug\net7.0-windows\
 mvvm
 none
 false
 TRACE;DEBUG;NET;NET7_0;NETCOREAPP
-C:\Users\zbcwise\source\repos\mvvm\mvvm\App.xaml
-2-377939315
+F:\GitHub\ThreadExpamples\mvvm\mvvm\App.xaml
+3920787859
 
-8-952921478
+11-1364479637
 1981827736222
-MainWindow.xaml;View\FlightPlan.xaml;
+MainWindow.xaml;View\FlightPlan.xaml;View\RunwayView.xaml;
 
 False
 

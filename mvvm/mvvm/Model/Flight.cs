@@ -48,7 +48,20 @@ namespace mvvm.Model
             }
         }
 
+        private PlaneState _state;
 
+        public PlaneState State
+        {
+            get { return _state; }
+            set 
+            {
+                if ( _state != value )
+                {
+                    _state = value;
+                    RaisePropertyChanged("State");
+                }
+            }
+        }
 
         public event PropertyChangedEventHandler? PropertyChanged;
         private void RaisePropertyChanged(string propertyName)
@@ -59,15 +72,32 @@ namespace mvvm.Model
             }
         }
 
+        static Random rand = new Random();
         public static Flight GenerateFlight()
         {
-            Random rand = new Random();
-            return new Flight
+            Flight t = new Flight
             {
                 _companyName = "CompanyName",
-                _takeOfTime = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, DateTime.Now.Hour+1, 0,0,0,0),
-                destination = (Destination)rand.Next(0,Enum.GetNames(typeof(Destination)).Length)
+                destination = (Destination)rand.Next(0,Enum.GetNames(typeof(Destination)).Length),
+                _state = (PlaneState)rand.Next(0,3),
             };
+            if(t._state == PlaneState.Refueling)
+            {
+                t._takeOfTime = DateTime.Now.AddSeconds(rand.Next(60, 180));
+            }
+            else if(t._state == PlaneState.Unloading)
+            {
+                t._takeOfTime = DateTime.Now.AddSeconds(rand.Next(60, 120));
+            }
+            else if (t._state == PlaneState.Repairing)
+            {
+                t._takeOfTime = DateTime.Now.AddSeconds(rand.Next(240, 480));
+            }
+            else
+            {
+                t._takeOfTime = DateTime.Now.AddSeconds(rand.Next(0, 60));
+            }
+            return t;
         }
     }
 
@@ -79,5 +109,15 @@ namespace mvvm.Model
         Canada,
         England,
         Finland,
+    }
+
+    public enum PlaneState
+    {
+        Refueling,
+        Repairing,
+        Unloading,
+        InFlight,
+        Loading,
+        ReadyForTakeOff,
     }
 }
