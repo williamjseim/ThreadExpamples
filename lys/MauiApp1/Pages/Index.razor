@@ -1,0 +1,32 @@
+﻿@page "/"
+
+<header>
+    <button @onclick="o=>state = !state" style="width : 20%; height : 100px;"></button>
+</header>
+<body>
+    <img src="@(state ? on : off)" style="width : 500px; height : 500px;" />
+</body>
+@code
+{
+    private static System.Timers.Timer timer;
+    bool state = false;
+    string on = "/images/1000_f_38999921_dagmvem5frdagcjw4iu4lfhfmd44m2mg.jpg";
+    string off = "/images/png-clipart-creative-bulb-lightbulb-energy-saving-lamps.png";
+
+    DateTime time = DateTime.Now.AddSeconds(10);
+
+    protected override async Task OnInitializedAsync()
+    {
+        timer = new System.Timers.Timer(6000);
+        timer.Elapsed += Automate;
+        timer.Start();
+    }
+
+
+    public void Automate(Object source, System.Timers.ElapsedEventArgs e)
+    {
+        time = DateTime.Now.AddMinutes(1);
+        state = !state;
+        InvokeAsync(StateHasChanged);
+    }
+}
