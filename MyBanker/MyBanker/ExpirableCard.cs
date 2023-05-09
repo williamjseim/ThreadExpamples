@@ -7,7 +7,7 @@ using System.Threading.Tasks.Dataflow;
 
 namespace MyBanker
 {
-    internal class ExpirableCard : Card
+    internal abstract class ExpirableCard : Card
     {
         public DateOnly? expirationDate { get; set; }
         protected virtual DateOnly? CreateExpirationDate()
