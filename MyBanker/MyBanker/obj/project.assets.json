@@ -15,11 +15,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\zbcwise\\source\\repos\\MyBanker\\MyBanker\\MyBanker.csproj",
+      "projectUniqueName": "C:\\Users\\zbcwise\\Documents\\GitHub\\ThreadExpamples\\MyBanker\\MyBanker\\MyBanker.csproj",
       "projectName": "MyBanker",
-      "projectPath": "C:\\Users\\zbcwise\\source\\repos\\MyBanker\\MyBanker\\MyBanker.csproj",
+      "projectPath": "C:\\Users\\zbcwise\\Documents\\GitHub\\ThreadExpamples\\MyBanker\\MyBanker\\MyBanker.csproj",
       "packagesPath": "C:\\Users\\zbcwise\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\zbcwise\\source\\repos\\MyBanker\\MyBanker\\obj\\",
+      "outputPath": "C:\\Users\\zbcwise\\Documents\\GitHub\\ThreadExpamples\\MyBanker\\MyBanker\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Users\\zbcwise\\AppData\\Roaming\\Godot\\mono\\GodotNuGetFallbackFolder",

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MyBanker
 {
-    internal class Card
+    internal abstract class Card
     {
         public string name { get; set; } = string.Empty;
         public string number { get; set; } = string.Empty;
