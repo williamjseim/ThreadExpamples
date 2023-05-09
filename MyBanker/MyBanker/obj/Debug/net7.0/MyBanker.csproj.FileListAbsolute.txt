@@ -1,0 +1,15 @@
+C:\Users\zbcwise\source\repos\MyBanker\MyBanker\bin\Debug\net7.0\MyBanker.exe
+C:\Users\zbcwise\source\repos\MyBanker\MyBanker\bin\Debug\net7.0\MyBanker.deps.json
+C:\Users\zbcwise\source\repos\MyBanker\MyBanker\bin\Debug\net7.0\MyBanker.runtimeconfig.json
+C:\Users\zbcwise\source\repos\MyBanker\MyBanker\bin\Debug\net7.0\MyBanker.dll
+C:\Users\zbcwise\source\repos\MyBanker\MyBanker\bin\Debug\net7.0\MyBanker.pdb
+C:\Users\zbcwise\source\repos\MyBanker\MyBanker\obj\Debug\net7.0\MyBanker.csproj.AssemblyReference.cache
+C:\Users\zbcwise\source\repos\MyBanker\MyBanker\obj\Debug\net7.0\MyBanker.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\zbcwise\source\repos\MyBanker\MyBanker\obj\Debug\net7.0\MyBanker.AssemblyInfoInputs.cache
+C:\Users\zbcwise\source\repos\MyBanker\MyBanker\obj\Debug\net7.0\MyBanker.AssemblyInfo.cs
+C:\Users\zbcwise\source\repos\MyBanker\MyBanker\obj\Debug\net7.0\MyBanker.csproj.CoreCompileInputs.cache
+C:\Users\zbcwise\source\repos\MyBanker\MyBanker\obj\Debug\net7.0\MyBanker.dll
+C:\Users\zbcwise\source\repos\MyBanker\MyBanker\obj\Debug\net7.0\refint\MyBanker.dll
+C:\Users\zbcwise\source\repos\MyBanker\MyBanker\obj\Debug\net7.0\MyBanker.pdb
+C:\Users\zbcwise\source\repos\MyBanker\MyBanker\obj\Debug\net7.0\MyBanker.genruntimeconfig.cache
+C:\Users\zbcwise\source\repos\MyBanker\MyBanker\obj\Debug\net7.0\ref\MyBanker.dll
