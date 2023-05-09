@@ -24,10 +24,7 @@ namespace MyBanker
             }
             return chosen;
         }
-        int moneyUsed;
-        public bool CardMaxed()
-        {
-            return moneyUsed < 20000;
-        }
+        private int monthlyAllowence = 20000;
+        public int MonthlyAllowence { get { return monthlyAllowence; } }
     }
 }

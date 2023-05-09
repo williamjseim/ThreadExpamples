@@ -8,6 +8,6 @@ namespace MyBanker
 {
     internal interface IMonthlyAllowence
     {
-        public bool CardMaxed();
+        public int MonthlyAllowence { get; }
     }
 }
