@@ -8,8 +8,8 @@ namespace MyBanker
 {
     internal abstract class Card
     {
-        public string name { get; set; } = string.Empty;//card holder name
-        public string number { get; set; } = string.Empty;//card number
+        protected string name { get; set; } = string.Empty;//card holder name
+        protected string number { get; set; } = string.Empty;//card number
         public Random random = new Random();//random here so i only had to put one on the class diagram
         public Card()
         {

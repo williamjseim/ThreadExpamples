@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MyBanker
 {
-    internal class MasterCard : ExpirableCard ,IMonthlyAllowence
+    internal class MasterCard : ExpirableCard ,IMonthlyAllowance
     {
         public MasterCard() : base()
         {

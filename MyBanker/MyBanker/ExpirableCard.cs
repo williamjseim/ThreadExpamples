@@ -9,7 +9,7 @@ namespace MyBanker
 {
     internal abstract class ExpirableCard : Card
     {
-        public DateOnly? expirationDate { get; set; }
+        protected DateOnly? expirationDate { get; set; }
         protected virtual DateOnly? CreateExpirationDate()
         {
             DateOnly expirationDate = new DateOnly(DateTime.Now.Year, 4, DateTime.Now.Day);

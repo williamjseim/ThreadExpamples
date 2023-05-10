@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MyBanker
 {
-    internal interface IMonthlyAllowence
+    internal interface IMonthlyAllowance
     {
         public int MonthlyAllowence { get; }
     }

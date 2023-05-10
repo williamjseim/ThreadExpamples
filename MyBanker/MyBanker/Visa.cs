@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MyBanker
 {
-    internal class Visa : ExpirableCard ,IMonthlyAllowence
+    internal class Visa : ExpirableCard ,IMonthlyAllowance
     {
         public Visa() : base()
         {
