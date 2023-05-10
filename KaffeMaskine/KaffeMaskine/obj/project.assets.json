@@ -15,11 +15,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\zbcwise\\source\\repos\\KaffeMaskine\\KaffeMaskine\\KaffeMaskine.csproj",
+      "projectUniqueName": "C:\\Users\\zbcwise\\Documents\\GitHub\\ThreadExpamples\\KaffeMaskine\\KaffeMaskine\\KaffeMaskine.csproj",
       "projectName": "KaffeMaskine",
-      "projectPath": "C:\\Users\\zbcwise\\source\\repos\\KaffeMaskine\\KaffeMaskine\\KaffeMaskine.csproj",
+      "projectPath": "C:\\Users\\zbcwise\\Documents\\GitHub\\ThreadExpamples\\KaffeMaskine\\KaffeMaskine\\KaffeMaskine.csproj",
       "packagesPath": "C:\\Users\\zbcwise\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\zbcwise\\source\\repos\\KaffeMaskine\\KaffeMaskine\\obj\\",
+      "outputPath": "C:\\Users\\zbcwise\\Documents\\GitHub\\ThreadExpamples\\KaffeMaskine\\KaffeMaskine\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Users\\zbcwise\\AppData\\Roaming\\Godot\\mono\\GodotNuGetFallbackFolder",
