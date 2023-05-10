@@ -21,7 +21,7 @@ namespace MyBanker
             int j = number.Length;//gets the length of the prefix
             for (int i = 0; i < 17 - j; i++)
             {
-                number += random.Next(0, 10);
+                number += random.Next(0, 10);//adds a random number to the list
             }
             return number;
         }
