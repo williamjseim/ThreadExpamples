@@ -13,17 +13,17 @@ namespace MyBanker
             
         }
 
-        string prefixs = "5018,5020,5038,5893,6304,6759,6761,6762,6763";
+        string prefixs = "5018,5020,5038,5893,6304,6759,6761,6762,6763";//holds all the prefix number that the card can start with
         protected override string CreateNumber()
         {
-            string[] prefixes = prefixs.Split(',');
-            string chosen = prefixes[random.Next(0, prefixes.Length)];
-            int j = chosen.Length;
+            string[] prefixes = prefixs.Split(',');//splits the prefixs numbers into an array
+            string number = prefixes[random.Next(0, prefixes.Length)];//choses a random prefix number
+            int j = number.Length;//gets the length of the prefix
             for (int i = 0; i < 20 - j; i++)
             {
-                chosen += random.Next(0, 10);
+                number += random.Next(0, 10);//adds a random number to the list
             }
-            return chosen;
+            return number;
         }
 
         protected override DateOnly? CreateExpirationDate()

@@ -12,7 +12,7 @@ namespace MyBanker
         {
             
         }
-        string prefixs = "4026,417500,4844,4913,4917";
+        string prefixs = "4026,417500,4844,4913,4917";//holds all the prefix number that the card can start with
 
         protected override string CreateNumber()
         {
