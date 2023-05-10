@@ -13,18 +13,17 @@ namespace MyBanker
             
         }
 
-        Random Random = new Random();
         protected override string CreateNumber()
         {
-            string chosen = "4";
+            string chosen = "4";//first number
             int j = chosen.Length;
-            for (int i = 0; i < 17-j; i++)
+            for (int i = 0; i < 17-j; i++)//adds the rest of the numbers
             {
-                chosen += Random.Next(0, 10);
+                chosen += random.Next(0, 10);
             }
             return chosen;
         }
         private int monthlyAllowence = 20000;
-        public int MonthlyAllowence { get { return monthlyAllowence; } }
+        public int MonthlyAllowence { get { return monthlyAllowence; } } 
     }
 }

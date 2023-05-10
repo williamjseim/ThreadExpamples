@@ -28,9 +28,9 @@ namespace MyBanker
 
         protected override DateOnly? CreateExpirationDate()
         {
-            DateOnly date = new DateOnly(DateTime.Now.Year,DateTime.Now.Month,DateTime.Now.Day);
-            date.AddYears(5);
-            date.AddMonths(8);
+            DateOnly date = new DateOnly(DateTime.Now.Year,DateTime.Now.Month,DateTime.Now.Day);//creates a date
+            date.AddYears(5);//adds 5 years to the date
+            date.AddMonths(8);//adds 8 month
             return date;
         }
     }
