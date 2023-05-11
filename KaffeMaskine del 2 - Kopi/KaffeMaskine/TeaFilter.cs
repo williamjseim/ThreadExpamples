@@ -13,7 +13,7 @@ namespace KaffeMaskine
             Product = tea;
         }
 
-        public override FluidType RunFluidThrough(FluidType fluidType)//kunne godt flytte op i filter og fjerne teafilter og coffeefilter men
+        public override FluidType RunFluidThrough(FluidType fluidType)
         {
             if (Product.fluidType == FluidType.Null) { return fluidType; }
             return Product.fluidType;
