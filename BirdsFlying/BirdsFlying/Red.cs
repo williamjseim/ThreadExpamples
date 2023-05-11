@@ -27,11 +27,6 @@ namespace BirdsFlying
             }
         }
 
-        public override void SetAltitude(double altitude)
-        {
-            throw new NotImplementedException();
-        }
-
         public override void SetLocation(double longitude, double latitude)
         {
             Position = new VectorI2D { x = (int)longitude, y = (int)latitude };

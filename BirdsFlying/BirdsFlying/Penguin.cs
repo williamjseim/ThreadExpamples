@@ -13,11 +13,6 @@ namespace BirdsFlying
             throw new NotImplementedException();
         }
 
-        public override void SetAltitude(double altitude)
-        {
-            throw new NotImplementedException();
-        }
-
         public override void SetLocation(double longitude, double latitude)
         {
             throw new NotImplementedException();
