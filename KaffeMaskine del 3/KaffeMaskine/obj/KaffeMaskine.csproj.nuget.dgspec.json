@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\zbcwise\\Documents\\GitHub\\ThreadExpamples\\KaffeMaskine del 2\\KaffeMaskine\\KaffeMaskine.csproj": {}
+    "C:\\Users\\zbcwise\\Documents\\GitHub\\ThreadExpamples\\KaffeMaskine del 3\\KaffeMaskine\\KaffeMaskine.csproj": {}
   },
   "projects": {
-    "C:\\Users\\zbcwise\\Documents\\GitHub\\ThreadExpamples\\KaffeMaskine del 2\\KaffeMaskine\\KaffeMaskine.csproj": {
+    "C:\\Users\\zbcwise\\Documents\\GitHub\\ThreadExpamples\\KaffeMaskine del 3\\KaffeMaskine\\KaffeMaskine.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\zbcwise\\Documents\\GitHub\\ThreadExpamples\\KaffeMaskine del 2\\KaffeMaskine\\KaffeMaskine.csproj",
+        "projectUniqueName": "C:\\Users\\zbcwise\\Documents\\GitHub\\ThreadExpamples\\KaffeMaskine del 3\\KaffeMaskine\\KaffeMaskine.csproj",
         "projectName": "KaffeMaskine",
-        "projectPath": "C:\\Users\\zbcwise\\Documents\\GitHub\\ThreadExpamples\\KaffeMaskine del 2\\KaffeMaskine\\KaffeMaskine.csproj",
+        "projectPath": "C:\\Users\\zbcwise\\Documents\\GitHub\\ThreadExpamples\\KaffeMaskine del 3\\KaffeMaskine\\KaffeMaskine.csproj",
         "packagesPath": "C:\\Users\\zbcwise\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\zbcwise\\Documents\\GitHub\\ThreadExpamples\\KaffeMaskine del 2\\KaffeMaskine\\obj\\",
+        "outputPath": "C:\\Users\\zbcwise\\Documents\\GitHub\\ThreadExpamples\\KaffeMaskine del 3\\KaffeMaskine\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Users\\zbcwise\\AppData\\Roaming\\Godot\\mono\\GodotNuGetFallbackFolder",

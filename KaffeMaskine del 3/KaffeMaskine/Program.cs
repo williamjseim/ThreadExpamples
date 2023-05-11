@@ -14,6 +14,10 @@
             teaMachine.ChangeFilter(new TeaFilter(new Tea()));
             teaMachine.FillWaterTank(76, FluidType.Water);
             Console.WriteLine(teaMachine.TurnOn());
+            CoffeeMachine.ChangeFilter(new CoffeeFilter(new Espresso()));
+            teaMachine.FillWaterTank(100, FluidType.Water);
+            teaMachine.ChangeCoffeeCan(new Cup(5));
+            Console.WriteLine(teaMachine.MakeOneCup());
         }
     }
 }

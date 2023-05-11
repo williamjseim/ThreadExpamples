@@ -24,6 +24,11 @@ namespace KaffeMaskine
             this.filter = filter;
         }
 
+        public void ChangeCoffeeCan(FluidContainer newCoffeeCan)
+        {
+            CoffeeCan = newCoffeeCan;
+        }
+
         public string TurnOn()
         {
             On = true;
@@ -38,6 +43,26 @@ namespace KaffeMaskine
                 return "no water";
             }
             return "no electricity, filter or water";
+        }
+        
+        public string MakeOneCup()
+        {
+            On = true;
+            if(On && filter != null)
+            {
+                if(WaterTank.fluidLevel > 0)
+                {
+                    if(CoffeeCan.GetType() == typeof(Cup))
+                    {
+                        CoffeeCan.Type = filter.RunFluidThrough(WaterTank.Type);
+                        WaterTank.fluidLevel = ((Cup)CoffeeCan).FillCup(WaterTank.fluidLevel);
+                        return $"Made one cup of {CoffeeCan.Type} with {CoffeeCan.fluidLevel}";
+                    }
+                    return "Put a cup in the coffee machine";
+                }
+                return "No water";
+            }
+            return "No electricity or filter";
         }
 
         public void FillWaterTank(int waterLevel, FluidType fluidType)

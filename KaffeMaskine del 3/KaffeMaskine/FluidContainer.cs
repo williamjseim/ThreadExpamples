@@ -12,6 +12,7 @@ namespace KaffeMaskine
         Water,
         Coffee,
         Tea,
+        Espresso,
     }
     internal class FluidContainer
     {
