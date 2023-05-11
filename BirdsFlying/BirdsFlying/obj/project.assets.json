@@ -15,11 +15,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\zbcwise\\source\\repos\\BirdsFlying\\BirdsFlying\\BirdsFlying.csproj",
+      "projectUniqueName": "C:\\Users\\zbcwise\\Documents\\GitHub\\ThreadExpamples\\BirdsFlying\\BirdsFlying\\BirdsFlying.csproj",
       "projectName": "BirdsFlying",
-      "projectPath": "C:\\Users\\zbcwise\\source\\repos\\BirdsFlying\\BirdsFlying\\BirdsFlying.csproj",
+      "projectPath": "C:\\Users\\zbcwise\\Documents\\GitHub\\ThreadExpamples\\BirdsFlying\\BirdsFlying\\BirdsFlying.csproj",
       "packagesPath": "C:\\Users\\zbcwise\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\zbcwise\\source\\repos\\BirdsFlying\\BirdsFlying\\obj\\",
+      "outputPath": "C:\\Users\\zbcwise\\Documents\\GitHub\\ThreadExpamples\\BirdsFlying\\BirdsFlying\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Users\\zbcwise\\AppData\\Roaming\\Godot\\mono\\GodotNuGetFallbackFolder",

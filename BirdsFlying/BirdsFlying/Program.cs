@@ -4,11 +4,20 @@
     {
         static void Main(string[] args)
         {
-            Penguin penguin = new Penguin();
-            penguin.Swim();
+            Console.BackgroundColor = ConsoleColor.Blue;
+            for (int y = 0; y < 100; y++)
+            {
+                for (int x = 0; x < 120; x++)
+                {
+                    Console.SetCursorPosition(x, y);
+                    Console.Write(" ");
+                }
+            }
             Bird bird = new Red();
-            bird.Drink();
-            bird.Eat();
+            bird.SetLocation(50, 10);
+            bird.Draw();
+            while (true) { }
+
         }
     }
 }

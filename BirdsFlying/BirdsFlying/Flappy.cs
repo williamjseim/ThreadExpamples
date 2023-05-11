@@ -8,9 +8,24 @@ namespace BirdsFlying
 {
     internal class Flappy : Bird, IFly
     {
+        public override void Draw()
+        {
+            throw new NotImplementedException();
+        }
+
         public void Fly()
         {
             Console.WriteLine("bird flys");
+        }
+
+        public override void SetAltitude(double altitude)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void SetLocation(double longitude, double latitude)
+        {
+            throw new NotImplementedException();
         }
     }
 }

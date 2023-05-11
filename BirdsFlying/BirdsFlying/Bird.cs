@@ -6,16 +6,17 @@ using System.Threading.Tasks;
 
 namespace BirdsFlying
 {
-    internal class Bird
+    internal abstract class Bird
     {
-        public virtual void Drink()
-        {
-            Console.WriteLine("bird drinks");
-        }
+        public VectorI2D Position;
+        public abstract void SetLocation(double longitude, double latitude);
+        public abstract void SetAltitude(double altitude);
+        public abstract void Draw();
+    }
 
-        public virtual void Eat()
-        {
-            Console.WriteLine("bird eats");
-        }
+    public struct VectorI2D
+    {
+        public int x;
+        public int y;
     }
 }
