@@ -17,7 +17,14 @@ namespace BirdsFlying
 
         public void Fly()
         {
-            Console.WriteLine("bird flys");
+            if(Position.y < 20)
+            {
+                Draw();
+            }
+            else
+            {
+                Console.WriteLine("crash and burn");
+            }
         }
 
         public override void SetAltitude(double altitude)
@@ -28,7 +35,6 @@ namespace BirdsFlying
         public override void SetLocation(double longitude, double latitude)
         {
             Position = new VectorI2D { x = (int)longitude, y = (int)latitude };
-
         }
     }
 }
