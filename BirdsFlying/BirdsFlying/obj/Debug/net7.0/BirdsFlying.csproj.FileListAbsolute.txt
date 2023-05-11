@@ -1,0 +1,15 @@
+C:\Users\zbcwise\source\repos\BirdsFlying\BirdsFlying\bin\Debug\net7.0\BirdsFlying.exe
+C:\Users\zbcwise\source\repos\BirdsFlying\BirdsFlying\bin\Debug\net7.0\BirdsFlying.deps.json
+C:\Users\zbcwise\source\repos\BirdsFlying\BirdsFlying\bin\Debug\net7.0\BirdsFlying.runtimeconfig.json
+C:\Users\zbcwise\source\repos\BirdsFlying\BirdsFlying\bin\Debug\net7.0\BirdsFlying.dll
+C:\Users\zbcwise\source\repos\BirdsFlying\BirdsFlying\bin\Debug\net7.0\BirdsFlying.pdb
+C:\Users\zbcwise\source\repos\BirdsFlying\BirdsFlying\obj\Debug\net7.0\BirdsFlying.csproj.AssemblyReference.cache
+C:\Users\zbcwise\source\repos\BirdsFlying\BirdsFlying\obj\Debug\net7.0\BirdsFlying.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\zbcwise\source\repos\BirdsFlying\BirdsFlying\obj\Debug\net7.0\BirdsFlying.AssemblyInfoInputs.cache
+C:\Users\zbcwise\source\repos\BirdsFlying\BirdsFlying\obj\Debug\net7.0\BirdsFlying.AssemblyInfo.cs
+C:\Users\zbcwise\source\repos\BirdsFlying\BirdsFlying\obj\Debug\net7.0\BirdsFlying.csproj.CoreCompileInputs.cache
+C:\Users\zbcwise\source\repos\BirdsFlying\BirdsFlying\obj\Debug\net7.0\BirdsFlying.dll
+C:\Users\zbcwise\source\repos\BirdsFlying\BirdsFlying\obj\Debug\net7.0\refint\BirdsFlying.dll
+C:\Users\zbcwise\source\repos\BirdsFlying\BirdsFlying\obj\Debug\net7.0\BirdsFlying.pdb
+C:\Users\zbcwise\source\repos\BirdsFlying\BirdsFlying\obj\Debug\net7.0\BirdsFlying.genruntimeconfig.cache
+C:\Users\zbcwise\source\repos\BirdsFlying\BirdsFlying\obj\Debug\net7.0\ref\BirdsFlying.dll
